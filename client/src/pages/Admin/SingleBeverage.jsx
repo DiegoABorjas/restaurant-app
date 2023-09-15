@@ -30,9 +30,9 @@ const SingleBeverage = () => {
     return <div>Loading...</div>;
   }
   return (
-    <Card className='p-8 flex justify-center self-center'>
+    <Card className='flex justify-center self-center max-w-sm bg-slate-900 text-white'>
       <div>
-          <div className=" p-8">
+          <div className="p-2">
             <div className="mr-4">
             </div>
             <div className="flex-1">

@@ -22,10 +22,10 @@ const Entree = () => {
   return (
     <>
       {/*there is an issue with resizing the cols with lower viewports so by default its for fullscreen, 2 looks good on small viewport 6 looks good on normal */}
-      <div className="grid grid-cols-6 gap-2 md:gap-4">
+      <div className="grid md:grid-cols-3 grid-cols-1 gap-2 md:gap-4 pb-4 mt-4">
         {entrees.map((entree) => (
-          <div key={entree._id} className="pb-4">
-            <div className="max-w-sm p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-800 flex">
+          <div key={entree._id} className="pb-4 flex justify-center">
+            <div className="max-w-sm p-6 border border-black rounded-lg shadow dark:text-white dark:bg-gray-600 flex">
               <div className="mr-4">
                 <img
                   src={entree.image}

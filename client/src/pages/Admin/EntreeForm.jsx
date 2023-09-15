@@ -41,13 +41,13 @@ const EntreeForm = () => {
     };
   
     return (
-      <Card className='p-8 flex justify-center self-center'>
-        <h1 className="text-center text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl">Add Entree:</h1>
+      <Card className='m-2 p-8 flex justify-center self-center bg-slate-900'>
+        <h1 className="text-center text-4xl font-bold leading-none tracking-tight text-white md:text-5xl">Add Entree</h1>
   
         {Auth.loggedIn() ? (
           <>
             <form
-              className="p-8 justify-center justify-space-between-md align-center"
+              className="px-8 justify-center justify-space-between-md align-center"
               onSubmit={handleFormSubmit}
             >
               <div className="">
@@ -55,7 +55,7 @@ const EntreeForm = () => {
                   name="name"
                   placeholder="Entree Name"
                   value={formState.name}
-                  className="form-input w-100"
+                  className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
                 ></input>
@@ -63,7 +63,7 @@ const EntreeForm = () => {
                   name="description"
                   placeholder="Entree Description"
                   value={formState.description}
-                  className="form-input w-100"
+                  className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
                 ></textarea>
@@ -71,7 +71,7 @@ const EntreeForm = () => {
                   name="price"
                   placeholder="Price"
                   value={formState.price}
-                  className="form-input w-100"
+                  className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
                 ></input>
@@ -79,7 +79,7 @@ const EntreeForm = () => {
                   name="in_stock"
                   placeholder="In Stock?"
                   value={formState.in_stock}
-                  className="form-input w-100"
+                  className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
                 ></input>
@@ -87,16 +87,16 @@ const EntreeForm = () => {
                   name="allergy"
                   placeholder="Allergies?"
                   value={formState.allergy}
-                  className="form-input w-100"
+                  className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
                 ></input>
               </div>
               <Button.Group className='flex gap-2 justify-center'>
-                <Button color="gray" type="submit">
+                <Button color="blue" type="submit">
                   Add Entree
                 </Button>
-                <Button color="gray" href="/admin">
+                <Button color="blue" href="/admin">
                   Cancel
                 </Button>
               </Button.Group>

@@ -30,9 +30,9 @@ const SingleEntree = () => {
     return <div>Loading...</div>;
   }
   return (
-    <Card className='p-8 flex justify-center self-center'>
+    <Card className='flex justify-center self-center max-w-sm bg-slate-900 text-white'>
       <div>
-          <div className="p-8">
+          <div className="p-4">
             <div className="mr-4">
             </div>
             <div className="flex-1">
@@ -54,7 +54,7 @@ const SingleEntree = () => {
                 {entree.in_stock ? 'In Stock' : 'Out of Stock'}
               </p>
               <Button.Group className='flex gap-2 justify-center'>
-                <Button color="gray" href={`/admin/entrees/${entree._id}/edit`}>Edit</Button>
+                <Button color="blue" href={`/admin/entrees/${entree._id}/edit`}>Edit</Button>
                 <Button color="red" onClick={handleDeleteEntree} >Delete</Button>
                 <Button color="blue" href={`/admin/entrees`}>Back</Button>
               </Button.Group>

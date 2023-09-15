@@ -5,10 +5,10 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav className="bg-white border-gray-200 dark:bg-gray-900">
+        <nav className="dark:bg-gray-800">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" className="flex items-center">
-              <img src="yums.png" className="logo-img" alt="Yums Logo" />
+              <img src="/myRestaurant.png" alt="myRestaurant logo" width={200}/>
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
             </a>
             <button
@@ -36,7 +36,7 @@ const Header = () => {
               </svg>
             </button>
             <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+              <ul className="font-medium flex flex-col text-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800">
                 <li></li>
                 <li>
                   <Link

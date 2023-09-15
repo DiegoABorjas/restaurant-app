@@ -5,9 +5,9 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Admin from './pages/Admin/Admin.jsx';
-import AdminEntree from './components/AdminEntrees.jsx'
+import AdminEntree from './pages/Admin/AdminEntrees.jsx'
 import SingleEntree from './pages/Admin/SingleEntree.jsx'
-import AdminBeverages from './components/AdminBeverages.jsx'
+import AdminBeverage from './pages/Admin/AdminBeverages.jsx'
 import SingleBeverage from './pages/Admin/SingleBeverage.jsx'
 import NotFound from './pages/NotFound';
 import Entree from './pages/Entree';
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin/beverages', 
-        element: <AdminBeverages />
+        element: <AdminBeverage />
       },
       {
         path: '/admin/beverages/:beverageId',

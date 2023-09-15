@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_BEVERAGE } from '../utils/queries';
+import { QUERY_BEVERAGE } from '../../utils/queries';
 import { Dropdown, Card, Button } from 'flowbite-react';
 
-const AdminMenu = () => {
+const AdminBeverage = () => {
     const { loading, data } = useQuery(QUERY_BEVERAGE);
     const [beverages, setBeverages] = useState([]);
 
@@ -20,15 +20,15 @@ const AdminMenu = () => {
 
   return (
     <>
-    <Card className='p-8 flex justify-center self-center'>
+    <Card className='p-8 flex justify-center self-center bg-gray'>
         <h1 className="mb-8 text-center text-4xl font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-white">View Beverages</h1>
-        <Dropdown color="gray" label="Select Beverage">
+        <Dropdown color="blue" label="Select Beverage">
             {beverages.map((beverage) => (
                 <div key={beverage._id} >
                 <div className="">
                     <div className="">
                     <a href={`/admin/beverages/${beverage._id}`}>
-                        <h5 className="">
+                        <h5 className="text-black">
                         {beverage.name}
                         </h5>
                     </a>
@@ -37,7 +37,7 @@ const AdminMenu = () => {
                 </div>
             ))}
         </Dropdown>
-        <Button color="gray" href="/admin">
+        <Button color="blue" href="/admin">
             Go Back
         </Button>
     </Card>
@@ -45,5 +45,5 @@ const AdminMenu = () => {
   )
 }
 
-export default AdminMenu
+export default AdminBeverage
 

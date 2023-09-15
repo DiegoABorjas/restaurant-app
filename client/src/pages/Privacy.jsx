@@ -6,28 +6,14 @@ const Privacy = () => {
     <>
       <div className="flex justify-center items-center min-h-screen">
       <div className="bg-white dark:bg-slate-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-        <h1 className="text-2xl font-semibold mb-4">Privacy Policy</h1>
-        <p className="mb-4">
-          Your privacy is important to us. This Privacy Policy explains how we
-          collect, use, disclose, and safeguard your information when you visit
-          our restaurant website.
-        </p>
-        <p className="mb-4">
-          Information We Collect: We may collect personal information such as
-          your name, email address, and phone number when you make a
-          reservation or sign up for our newsletter.
-        </p>
-        <p className="mb-4">
-          How We Use Your Information: We use your information to provide you
-          with updates, offers, and to process reservations.
-        </p>
-        <p className="mb-4">
-          Third-Party Disclosure: We do not sell or share your personal
-          information with third parties without your consent.
-        </p>
-        <p className="mb-4">
-          Security: We take security seriously and implement measures to
-          protect your information.
+        <h1 className=" text-center text-2xl font-semibold mb-4">Privacy Policy</h1>
+        <p className="mb-4 text-center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis rem pariatur ad neque illo amet beatae natus quasi possimus sunt omnis laudantium veniam quod, facere corporis minus architecto eos?
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae voluptate iusto dolore voluptas, atque animi consequuntur eveniet quam perferendis tempora in cupiditate non, ratione ut culpa ducimus sequi sit praesentium!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non excepturi, saepe enim odio rerum ea eligendi ratione minus aspernatur consectetur, labore voluptate error natus, quibusdam dolorem aperiam debitis ex. Ipsum.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, deserunt fugit. Deleniti atque cumque provident eum aliquid laboriosam in. Odio aut velit voluptatibus, reiciendis aliquid qui saepe unde cupiditate neque.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil aspernatur iste ad, voluptatem dolorem doloribus quod et consequatur iure quo fugiat dolore dolores soluta, at sunt, nemo officia! Sequi, tempore.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium fuga, sapiente voluptas molestiae odit facere et ducimus voluptatibus atque veritatis est aspernatur ab ipsum ipsam quod corporis ipsa perferendis voluptate?
         </p>
       </div>
     </div>

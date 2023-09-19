@@ -64,3 +64,29 @@ mutation removeBeverage($beverageId: ID!) {
     image
   }
 }`
+
+export const UPDATE_ENTREE = gql`
+mutation updateEntree($updateEntreeId: ID!, $entree: EntreeUpdate!) {
+  updateEntree(id: $updateEntreeId, entree: $entree) {
+    _id
+    name
+    description
+    price
+    in_stock
+    allergy
+    image
+  }
+}`
+
+export const UPDATE_BEVERAGE = gql`
+mutation updateBeverage($updateBeverageId: ID!, $beverage: BeverageUpdate!) {
+  updateBeverage(id: $updateBeverageId, beverage: $beverage) {
+    _id
+    name
+    description
+    price
+    in_stock
+    has_alcohol
+    image
+  }
+}`

@@ -2,17 +2,13 @@
 import { useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { Card, Button } from 'flowbite-react';
-
-
 import { QUERY_SINGLE_ENTREE } from '../../utils/queries';
-
 import { REMOVE_ENTREE } from '../../utils/mutations'
 
 const SingleEntree = () => {
-  // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { entreeId } = useParams();
 
-  const [ deleteEntree ] = useMutation(REMOVE_ENTREE);
+  const [ deleteEntree, {error, result } ] = useMutation(REMOVE_ENTREE);
 
   const { loading, data } = useQuery(QUERY_SINGLE_ENTREE, {
     // pass URL parameter
@@ -22,8 +18,11 @@ const SingleEntree = () => {
   const entree = data?.entree || {};
 
   const handleDeleteEntree = async () => {
-    const result = await deleteEntree({ variables: { entreeId } })    
-    // if (result) set state of that error message to the result      
+    const result = await deleteEntree({ variables: { entreeId } })   
+    // if (result) set state of that error message to the result     
+    if (result) {
+      console.log('Entree Deleted!')
+    } 
   }
 
   if (loading) {
@@ -54,11 +53,16 @@ const SingleEntree = () => {
                 {entree.in_stock ? 'In Stock' : 'Out of Stock'}
               </p>
               <Button.Group className='flex gap-2 justify-center'>
-                <Button color="blue" href={`/admin/entrees/${entree._id}/edit`}>Edit</Button>
-                <Button color="red" onClick={handleDeleteEntree} >Delete</Button>
+                <Button color="blue" href={`/admin/entrees/${entree._id}/update`}>Update</Button>
+                <Button color="red" onClick={handleDeleteEntree}>Delete</Button>
                 <Button color="blue" href={`/admin/entrees`}>Back</Button>
               </Button.Group>
             </div>
+            {result && (
+                <div className="col-12 my-3 bg-danger text-white p-3">
+                  {result}
+                </div>
+              )}
           </div>
         </div>
     </Card>

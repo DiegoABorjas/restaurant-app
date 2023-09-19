@@ -18,6 +18,8 @@ import BeverageForm from './pages/Admin/BeverageForm.jsx';
 import Success from './pages/Success.jsx';
 import Fail from './pages/Fail.jsx';
 import Privacy from './pages/Privacy.jsx'
+import UpdateEntree from './pages/Admin/UpdateEntree.jsx';
+import UpdateBeverage from './pages/Admin/UpdateBeverage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
         element: <SingleEntree />
       },
       {
+        path: '/admin/entrees/:entreeId/update',
+        element: <UpdateEntree />
+      },
+      {
         path: '/admin/entreeForm', 
         element: <EntreeForm />
       },
@@ -56,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: '/admin/beverages/:beverageId',
         element: <SingleBeverage />
+      },
+      {
+        path: '/admin/beverages/:beverageId/update',
+        element: <UpdateBeverage />
       },
       {
         path: '/admin/beverageForm', 

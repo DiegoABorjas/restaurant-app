@@ -52,7 +52,7 @@ const SingleBeverage = () => {
                 {beverage.in_stock ? 'In Stock' : 'Out of Stock'}
               </p>
               <Button.Group className='flex gap-2 justify-center'>
-                <Button color="gray" href={`/admin/beverages/${beverage._id}/edit`}>Edit</Button>
+                <Button color="blue" href={`/admin/beverages/${beverage._id}/update`}>Update</Button>
                 <Button color="red" onClick={handleDeleteBeverage}>Delete</Button>
                 <Button color="blue" href={`/admin/beverages`}>Back</Button>
               </Button.Group>

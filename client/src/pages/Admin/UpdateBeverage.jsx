@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'flowbite-react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
-import { ADD_BEVERAGE } from '../../utils/mutations';
+import { QUERY_SINGLE_BEVERAGE } from '../../utils/queries';
+import { UPDATE_BEVERAGE } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const BeverageForm = () => {
+const UpdateBeverage = () => {
+    const { beverageId } = useParams();
+    const { loading, data } = useQuery(QUERY_SINGLE_BEVERAGE, {
+        // pass URL parameter
+        variables: { beverageId: beverageId },
+    });
+    const beverage = data?.beverage || {};
+
     const [formState, setFormState] = useState({
         name: '',
         description: '',
@@ -15,8 +24,15 @@ const BeverageForm = () => {
         in_stock: '',
         has_alcohol: '',
     });
-    
-    const [createBeverage, { error }] = useMutation(ADD_BEVERAGE);
+
+    useEffect(() => {
+        setFormState({
+            ...formState, name: beverage.name, description: beverage.description, 
+            price: beverage.price, in_stock: beverage.in_stock, has_alcohol: beverage.has_alcohol
+        })
+    }, [data])
+
+    const [updateBeverage, { error, result }] = useMutation(UPDATE_BEVERAGE);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -29,21 +45,21 @@ const BeverageForm = () => {
   
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
     
         try {
-          createBeverage({
-            variables: { beverage: formState },
+          const result = await updateBeverage({
+            variables: { updateBeverageId: beverageId, beverage: formState },
           });
     
         } catch (e) {
           console.error(e);
         }
+        console.log(`${result} updated!`)
     };
   
     return (
       <Card className='m-2 p-8 flex justify-center self-center bg-slate-900'>
-        <h1 className="text-center text-4xl font-bold leading-none tracking-tight text-white md:text-5xl">Add Beverage</h1>
+        <h1 className="text-center text-4xl font-bold leading-none tracking-tight text-white md:text-5xl">Update beverage</h1>
   
         {Auth.loggedIn() ? (
           <>
@@ -62,7 +78,7 @@ const BeverageForm = () => {
                 ></input>
                 <textarea
                   name="description"
-                  placeholder="Beverage Description"
+                  placeholder="beverage Description"
                   value={formState.description}
                   className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
@@ -96,9 +112,9 @@ const BeverageForm = () => {
               </div>
               <Button.Group className='flex gap-2 justify-center'>
                 <Button color="blue" type="submit">
-                  Add Beverage
+                  Update Beverage
                 </Button>
-                <Button color="blue" href="/admin">
+                <Button color="blue" href={`/admin/beverages/${beverageId}`}>
                   Cancel
                 </Button>
               </Button.Group>
@@ -110,8 +126,8 @@ const BeverageForm = () => {
             </form>
           </>
         ) : (
-          <p>
-            You need to be logged in to add a beverage. Please{' '}
+          <p className='text-white'>
+            You need to be logged in to add beverage. Please{' '}
             <Link to="/login">login</Link>
           </p>
         )}
@@ -119,4 +135,4 @@ const BeverageForm = () => {
     );
   };
   
-  export default BeverageForm;
+  export default UpdateBeverage;

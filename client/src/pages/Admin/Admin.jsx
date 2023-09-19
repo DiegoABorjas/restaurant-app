@@ -9,7 +9,7 @@ const Admin = () => {
 const test = "test";
 
 return (
-    <Card className='md:p-8 flex justify-center self-center bg-gray-600 text-center'>
+    <Card className='md:p-8 flex justify-center self-center bg-white-600 text-center'>
       
       {Auth.loggedIn() ? (
         <>
@@ -32,7 +32,7 @@ return (
     </Button.Group>
     </>
         ) : (
-          <p>
+          <p className='text-white'>
             You need to be logged in to add entree. Please{' '}
             <Link to="/login">login</Link>
           </p>

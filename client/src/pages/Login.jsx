@@ -41,7 +41,7 @@ const Login = (props) => {
   };
 
   return (
-    <main className="container rounded-md bg-gray-800">
+    <main className="container rounded-md dark:bg-gray-800 bg-slate-900">
       <div className="">
         <div className="p-4">
           <h4 className=" text-white p-2">Login</h4>

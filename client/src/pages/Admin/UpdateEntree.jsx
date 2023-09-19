@@ -1,39 +1,54 @@
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'flowbite-react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
-import { ADD_BEVERAGE } from '../../utils/mutations';
+import { QUERY_SINGLE_ENTREE } from '../../utils/queries';
+import { UPDATE_ENTREE } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const BeverageForm = () => {
+const UpdateEntree = () => {
+    const { entreeId } = useParams();
+    const { loading, data } = useQuery(QUERY_SINGLE_ENTREE, {
+        // pass URL parameter
+        variables: { entreeId: entreeId },
+    });
+    const entree = data?.entree || {};
+
     const [formState, setFormState] = useState({
         name: '',
         description: '',
         price: '',
         in_stock: '',
-        has_alcohol: '',
+        allergy: '',
     });
-    
-    const [createBeverage, { error }] = useMutation(ADD_BEVERAGE);
+
+    useEffect(() => {
+        setFormState({
+            ...formState, name: entree.name, description: entree.description, 
+            price: entree.price, in_stock: entree.in_stock, allergy: entree.allergy
+        })
+    }, [data])
+
+    const [updateEntree, { error, test }] = useMutation(UPDATE_ENTREE);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
     
         setFormState({
           ...formState,
-          [name]: name === "price" ? Number(value) : name === "in_stock" ? Boolean(value) : name === "has_alcohol" ? Boolean(value) : value,
+          [name]: name === "price" ? Number(value) : name === "in_stock" ? Boolean(value) : value,
         });
     };
   
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
     
         try {
-          createBeverage({
-            variables: { beverage: formState },
+          const { data } = await updateEntree({
+            variables: { updateEntreeId: entreeId, entree: formState },
           });
     
         } catch (e) {
@@ -43,7 +58,7 @@ const BeverageForm = () => {
   
     return (
       <Card className='m-2 p-8 flex justify-center self-center bg-slate-900'>
-        <h1 className="text-center text-4xl font-bold leading-none tracking-tight text-white md:text-5xl">Add Beverage</h1>
+        <h1 className="text-center text-4xl font-bold leading-none tracking-tight text-white md:text-5xl">Update Entree</h1>
   
         {Auth.loggedIn() ? (
           <>
@@ -54,7 +69,7 @@ const BeverageForm = () => {
               <div className="">
                 <input
                   name="name"
-                  placeholder="Beverage Name"
+                  placeholder="Entree Name"
                   value={formState.name}
                   className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
@@ -62,7 +77,7 @@ const BeverageForm = () => {
                 ></input>
                 <textarea
                   name="description"
-                  placeholder="Beverage Description"
+                  placeholder="Entree Description"
                   value={formState.description}
                   className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
@@ -86,9 +101,9 @@ const BeverageForm = () => {
                   onChange={handleChange}
                 ></input>
                 <input
-                  name="has_alcohol"
-                  placeholder="Has Alcohol?"
-                  value={formState.has_alcohol}
+                  name="allergy"
+                  placeholder="Allergies?"
+                  value={formState.allergy}
                   className="form-input bg-dark w-100 text-white"
                   style={{ lineHeight: '1.5', resize: 'vertical' }}
                   onChange={handleChange}
@@ -96,9 +111,9 @@ const BeverageForm = () => {
               </div>
               <Button.Group className='flex gap-2 justify-center'>
                 <Button color="blue" type="submit">
-                  Add Beverage
+                  Update Entree
                 </Button>
-                <Button color="blue" href="/admin">
+                <Button color="blue" href={`/admin/entrees/${entreeId}`}>
                   Cancel
                 </Button>
               </Button.Group>
@@ -110,8 +125,8 @@ const BeverageForm = () => {
             </form>
           </>
         ) : (
-          <p>
-            You need to be logged in to add a beverage. Please{' '}
+          <p className='text-white'>
+            You need to be logged in to add entree. Please{' '}
             <Link to="/login">login</Link>
           </p>
         )}
@@ -119,4 +134,4 @@ const BeverageForm = () => {
     );
   };
   
-  export default BeverageForm;
+  export default UpdateEntree;

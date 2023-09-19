@@ -15,7 +15,7 @@ const EntreeForm = () => {
         in_stock: '',
         allergy: '',
     });
-    const [createEntree, { error, data }] = useMutation(ADD_ENTREE);
+    const [createEntree, { error, result }] = useMutation(ADD_ENTREE);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -28,7 +28,6 @@ const EntreeForm = () => {
   
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
     
         try {
           const { data } = await createEntree({
@@ -68,6 +67,7 @@ const EntreeForm = () => {
                   onChange={handleChange}
                 ></textarea>
                 <input
+                  type="number"
                   name="price"
                   placeholder="Price"
                   value={formState.price}
@@ -100,6 +100,11 @@ const EntreeForm = () => {
                   Cancel
                 </Button>
               </Button.Group>
+              {result && (
+                <div className="col-12 my-3 bg-danger text-white p-3">
+                  {result}
+                </div>
+              )}
               {error && (
                 <div className="col-12 my-3 bg-danger text-white p-3">
                   {error.message}

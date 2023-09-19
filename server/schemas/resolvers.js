@@ -86,7 +86,7 @@ const resolvers = {
 
       try {
         const result = await Entree.findOneAndDelete({ _id: entreeId })
-        return true
+        return result
       }
       catch {
         return false
@@ -109,7 +109,14 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      return await Beverage.findByIdAndUpdate(args.id, args.beverage, { new: true });
+      try {
+        const result = await Beverage.findByIdAndUpdate(args.id, args.beverage, { new: true });
+        return result
+      }
+      catch {
+        return false
+      }
+
     },
     updateEntree: async (parent, args, context) => {
 

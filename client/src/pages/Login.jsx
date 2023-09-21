@@ -22,7 +22,6 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
@@ -41,7 +40,7 @@ const Login = (props) => {
   };
 
   return (
-    <main className="container rounded-md dark:bg-gray-800 bg-slate-900">
+    <main className="container rounded-md dark:bg-gray-800 bg-gray-500">
       <div className="">
         <div className="p-4">
           <h4 className=" text-white p-2">Login</h4>
@@ -69,7 +68,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn btn-block bg-slate-900 text-white"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >

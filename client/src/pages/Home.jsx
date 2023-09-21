@@ -37,7 +37,7 @@ const Home = () => {
           <div className="flex justify-center items-center">
             <img
               className="h-auto max-w-full"
-              src="images/restaurant.jpg"
+              src="/images/restaurant.jpg"
               alt="Background image"
             />
           </div>
@@ -55,7 +55,7 @@ const Home = () => {
               ) : (
                 <ul>
                   {randomEntrees.map((entree) => (
-                    <div key={entree.id} className="recipe-card">
+                    <div key={entree._id} className="recipe-card">
                       <div className="flex">
                         <img
                           className="pb-2 pl-2"

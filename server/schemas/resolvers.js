@@ -27,7 +27,6 @@ const resolvers = {
    
     login: async (parent, { email, password }) => {
       const admin = await Admin.findOne({ email });
-      console.log(admin)
 
       if (!admin) {
         throw AuthenticationError;
@@ -70,7 +69,6 @@ const resolvers = {
     },
 
     removeBeverage: async (parent, { beverageId }, context) => {
-      console.log(beverageId)
 
       if (!context) {
         throw AuthenticationError;
@@ -97,8 +95,6 @@ const resolvers = {
       if (!context) {
         throw AuthenticationError;
       }
-
-      console.log(restaurantId)
 
       return Restaurant.findOneAndDelete({ _id: restaurantId });
     },

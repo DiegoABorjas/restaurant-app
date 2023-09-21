@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/yums');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/my-restaurant-app');
 
 module.exports = mongoose.connection;

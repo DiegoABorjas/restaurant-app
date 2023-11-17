@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Navbar } from 'flowbite-react';
 import Checkout from '../pages/Checkout';
 const Header = () => {
   return (
@@ -34,7 +35,7 @@ const Header = () => {
                 />
               </svg>
             </button>
-            <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+            <div className="w-full md:block md:w-auto" id="navbar-default">
               <ul className="font-medium flex flex-col text-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-500 md:flex-row md:space-x-8 md:mt-0 md:border-0  dark:bg-gray-800">
                 <li></li>
                 <li>
